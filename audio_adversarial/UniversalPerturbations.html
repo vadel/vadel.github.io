@@ -1,0 +1,467 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<script>
+</script>
+
+<title>Universal Audio Adversarial Perturbations</title>
+<style>
+
+	
+	.header img {
+		float: left;
+		display: inline; 
+	}
+
+	.header h1 {
+		position: relative;
+		display: inline; 
+		top: 40px;
+		left: 10px;
+	}
+
+	a.clickable{
+		text-decoration:  none; 
+		position: relative;
+		top: -1.2em;
+	}
+
+	/* Hide/Show the predicted class of the model of a given input audio.
+	   We followed the web style of previous works: 
+	   - https://nicholas.carlini.com/code/audio_adversarial_examples
+	   - https://paarthneekhara.github.io/universalaudio/
+	*/
+	span.abstract{
+		position: relative; 
+		top: -1.2em; 
+		padding-left: 0em;
+	}
+	input[type=checkbox] {
+          display: none;
+    } 
+	input[type=checkbox]:checked ~ .abstract  {
+	  display: none;
+	}
+	input[type=radio] {
+	  display: none;
+	}
+	input[type=radio]:not(:checked) ~ .abstract  {
+	  display: none;
+	}
+
+	p{ width: 1200px; font-size:100%}
+
+</style>
+</head>
+
+
+<div class="header">
+<h1>Universal Adversarial Perturbations for Speech Command Classification</h1>
+<img src="icon.png" alt="headphones_recommended" height="160" border="0"/>
+</div>
+
+<br><br><br><br><br><br><br><br>
+
+<p style="font-size:170%;"> Part 1 - Standard evaluation</p>
+<p> Comparison of different distortion levels according to the metric: <br> <img src="http://latex.codecogs.com/gif.latex?\hspace{1.5cm} dB_{max,x}(v)= dB_{max}(v)-dB_{max}(x)" border="0"/>, <br> where <br> <img src="http://latex.codecogs.com/gif.latex?\hspace{1.5cm} dB_{max}(x)= max_i \ 20\cdot \log_{10}(|x_i|)" border="0"/><br></p> 
+<p> This metric is employed by convention in previous works on audio adversarial examples for speech recognition problems, in which distortion levels below -32dB are assumed to be acceptable. However, we show that this metric is not representative for speech related tasks. Notice that, even for small distortion levels (under this metric), the perturbations are easily detectable. </p>
+
+
+<!-- Possible style: Proposed evaluation: -->
+<!-- Possible style: Mean distortion  (background part): -->
+
+<p style="font-size:150%;"><b>Standard evaluation: -25dB </b> | Proposed evaluation: -7dB </p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_25_1251_clean_no_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio001" style="float: none; color:blue;">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio001" type="checkbox">
+			<span class="abstract">No</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_25_1251_pert_no_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio002" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio002" type="checkbox">
+			<span class="abstract" >Left</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+<p style="font-size:150%;"><b>Standard evaluation: -30 dB </b> | Proposed evaluation: -11dB </p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_29_4864_clean_go__unknown_.wav">
+			</audio>
+			<a class="clickable"><label for="audio003" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio003" type="checkbox">
+			<span class="abstract" >Go</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_29_4864_pert_go__unknown_.wav">
+			</audio>
+			<a class="clickable"><label for="audio004" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio004" type="checkbox">
+			<span class="abstract" >Unknown</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+
+<p style="font-size:150%;"><b>Standard evaluation: -32 dB </b> | Proposed evaluation: -8dB </p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_32_2313_clean_down__unknown_.wav">
+			</audio>
+			<a class="clickable"><label for="audio005" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio005" type="checkbox">
+			<span class="abstract" >Down</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_32_2313_pert_down__unknown_.wav">
+			</audio>
+			<a class="clickable"><label for="audio006" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio006" type="checkbox">
+			<span class="abstract" >Unknown</span>
+		</div>
+	</li>
+
+</ul>
+
+
+
+
+
+
+
+
+
+<p style="font-size:150%;"><b>Standard evaluation: -35 dB </b> | Proposed evaluation: -8dB </p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_35_3639_clean_on_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio009" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio009" type="checkbox">
+			<span class="abstract" >On</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_35_3639_pert_on_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio010" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio010" type="checkbox">
+			<span class="abstract" >Left</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+
+
+
+<p style="font-size:150%;"><b>Standard evaluation: -40 dB </b> | Proposed evaluation: -19dB </p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_39_1261_clean_no_down.wav">
+			</audio>
+			<a class="clickable"><label for="audio011" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio011" type="checkbox">
+			<span class="abstract" >No</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/std_39_1261_pert_no_down.wav">
+			</audio>
+			<a class="clickable"><label for="audio012" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio012" type="checkbox">
+			<span class="abstract" >Down</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+
+<p style="font-size:170%;"> Part 2 - Proposed evaluation</p>
+<p> Comparison of different distortion levels according to the metric: <br> <img src="http://latex.codecogs.com/gif.latex?\hspace{1.5cm} dB_{mean,x}(v)= dB_{mean}(v)-dB_{mean}(x)" border="0"/>, <br> where <br> <img src="http://latex.codecogs.com/gif.latex?\hspace{1.5cm} dB_{mean}(x)=\frac{1}{d} \sum_i^d 20\cdot \log_{10}(|x_i|)" border="0"/>
+<br> Metric applied to the background part of the audio signal.</p> 
+<p> We discovered that measuring the distortion in both vocal and background part lead to more representative results.
+In particular, we discovered that the perturbation is more susceptible to be detectable in the background part than in the vocal part, due to the lower sound intensity in that part. This metric is also more correlated with the human judgment, as lower distortion levels lead to a lower detectability. For these reasons, we propose the use of more rigorous approaches to measure the distortion of audio adversarial examples, in order to promote a deeper study of these vulnerabilities and the risk they suppose. </p>
+
+
+<p style="font-size:150%;">Standard evaluation: -38dB |  <b>Proposed evaluation: -20dB </b></p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_20_1174_clean_yes_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio013" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio013" type="checkbox">
+			<span class="abstract" >Yes</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_20_1174_pert_yes_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio014" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio014" type="checkbox">
+			<span class="abstract" >Left</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+
+
+<p style="font-size:150%;">Standard evaluation: -47dB |  <b>Proposed evaluation: -25dB </b></p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_25_3293_clean_on_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio015" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio015" type="checkbox">
+			<span class="abstract" >On</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_25_3293_pert_on_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio016" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio016" type="checkbox">
+			<span class="abstract" >Left</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+
+
+<p style="font-size:150%;">Standard evaluation: -45dB |  <b>Proposed evaluation: -30dB </b></p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_29_4813_clean_go_no.wav">
+			</audio>
+			<a class="clickable"><label for="audio017" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio017" type="checkbox">
+			<span class="abstract" >Go</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_29_4813_pert_go_no.wav">
+			</audio>
+			<a class="clickable"><label for="audio018" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio018" type="checkbox">
+			<span class="abstract" >No</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+
+
+
+
+<p style="font-size:150%;">Standard evaluation: -50dB |  <b>Proposed evaluation: -32dB </b></p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_32_3091_clean_right_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio019" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio019" type="checkbox">
+			<span class="abstract" >Right</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_32_3091_pert_right_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio020" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio020" type="checkbox">
+			<span class="abstract" >Left</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+
+<p style="font-size:150%;">Standard evaluation: -47dB | <b>Proposed evaluation: -35dB </b></p>
+<ul>
+	<li>
+		<span class="desc">
+			Original
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_35_1178_clean_yes_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio021" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio021" type="checkbox">
+			<span class="abstract" >Yes</span>
+		</div>
+	</li>
+
+	<li>
+		<span class="desc">
+			Adversarial Example
+		</span>
+
+		<div>
+			<audio controls="controls">
+			<source src="audio/mb_35_1178_pert_yes_left.wav">
+			</audio>
+			<a class="clickable"><label for="audio022" style="float: none; color:blue">[Click to Show Prediction]</label></a>
+			<input checked="checked" id="audio022" type="checkbox">
+			<span class="abstract" >Left</span>
+		</div>
+	</li>
+</ul>
+
+
+
+
+</body></html>
