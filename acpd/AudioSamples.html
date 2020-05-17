@@ -19,9 +19,36 @@
 	}
 	td, th{
 		background-color: #ffffff;
-	}
+    text-align:center;
+    font-weight: bold;
+  }
+  td{    
+    width: 2cm;
+    height: 0.85cm;
+  }
 
 </style>
+
+
+<script>
+visible = 1; //var that keeps track of which table is visible (1 or 2)
+function change_table() {
+  t1 = document.getElementById("audioTable");
+  t2 = document.getElementById("distortionTable");
+  if(visible == 1) {
+    visible = 2;
+    t1.style.display = 'none';
+    t2.style.display = 'inline-block';
+    document.getElementById("changeTableBtn").innerHTML = "Show Audios";
+  } else {
+    visible = 1;
+    t1.style.display = 'inline-block';
+    t2.style.display = 'none';
+    document.getElementById("changeTableBtn").innerHTML = "Show Distortion (&#949)";
+  }
+}
+</script>
+
 
 <audio id="f_0_0_audio" src="audios/f_0_0_audio.wav"></audio>
 <audio id="f_0_0_adv" src="audios/f_0_0_adv.wav"></audio>
@@ -323,7 +350,12 @@
 <br>
 <br>
 
-<table border="1">
+<button id="changeTableBtn" onclick="change_table()">Show Distortion (&#949)</button>
+
+<br>
+<br>
+
+<table border="1" id="audioTable">
 <tr>
 <th> </th>
 <th>silence</th>
@@ -1432,3 +1464,330 @@
 <td class="clean"></td>
 </tr>
 </table>
+
+
+
+
+
+
+
+
+
+<table border="1" id="distortionTable" style="display: none;">
+<tr>
+<th> </th>
+<th>silence</th>
+<th>unknown</th>
+<th>yes</th>
+<th>no</th>
+<th>up</th>
+<th>down</th>
+<th>left</th>
+<th>right</th>
+<th>on</th>
+<th>off</th>
+<th>stop</th>
+<th>go</th>
+</tr>
+<tr>
+<td><b>silence</b></td><td class="clean"></td>
+<td class="adv">
+0.007</td>
+<td class="adv">
+0.012</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.001</td>
+<td class="adv">
+0.021</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.000</td>
+<td class="adv">
+0.005</td>
+<td class="adv">
+0.011</td>
+<td class="adv">
+0.050</td>
+<td class="adv">
+0.020</td>
+</tr>
+<tr>
+<td><b>unknown</b></td><td class="adv">
+0.056</td>
+<td class="clean"></td>
+<td class="adv">
+0.021</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.126</td>
+<td class="adv">
+0.009</td>
+<td class="adv">
+0.084</td>
+<td class="adv">
+0.006</td>
+<td class="adv">
+0.027</td>
+<td class="adv">
+0.064</td>
+<td class="adv">
+0.004</td>
+<td class="adv">
+0.000</td>
+</tr>
+<tr>
+<td><b>yes</b></td><td class="adv">
+0.085</td>
+<td class="adv">
+0.026</td>
+<td class="clean"></td>
+<td class="adv">
+0.107</td>
+<td class="adv">
+0.015</td>
+<td class="adv">
+0.125</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.085</td>
+<td class="adv">
+0.145</td>
+<td class="adv">
+0.038</td>
+<td class="adv">
+0.037</td>
+<td class="adv">
+0.080</td>
+</tr>
+<tr>
+<td><b>no</b></td><td class="adv">
+0.017</td>
+<td class="adv">
+0.005</td>
+<td class="adv">
+0.004</td>
+<td class="clean"></td>
+<td class="adv">
+0.077</td>
+<td class="adv">
+0.004</td>
+<td class="adv">
+0.010</td>
+<td class="adv">
+0.023</td>
+<td class="adv">
+0.010</td>
+<td class="adv">
+0.012</td>
+<td class="adv">
+0.007</td>
+<td class="adv">
+0.002</td>
+</tr>
+<tr>
+<td><b>up</b></td><td class="adv">
+0.003</td>
+<td class="adv">
+0.007</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.003</td>
+<td class="clean"></td>
+<td class="adv">
+0.014</td>
+<td class="adv">
+0.009</td>
+<td class="adv">
+0.028</td>
+<td class="adv">
+0.001</td>
+<td class="adv">
+0.009</td>
+<td class="adv">
+0.005</td>
+<td class="adv">
+0.006</td>
+</tr>
+<tr>
+<td><b>down</b></td><td class="adv">
+0.032</td>
+<td class="adv">
+0.006</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.004</td>
+<td class="adv">
+0.002</td>
+<td class="clean"></td>
+<td class="adv">
+0.090</td>
+<td class="adv">
+0.084</td>
+<td class="adv">
+0.010</td>
+<td class="adv">
+0.024</td>
+<td class="adv">
+0.004</td>
+<td class="adv">
+0.003</td>
+</tr>
+<tr>
+<td><b>left</b></td><td class="adv">
+0.041</td>
+<td class="adv">
+0.005</td>
+<td class="adv">
+0.009</td>
+<td class="adv">
+0.013</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.033</td>
+<td class="clean"></td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.001</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.013</td>
+</tr>
+<tr>
+<td><b>right</b></td><td class="adv">
+0.019</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.005</td>
+<td class="adv">
+0.007</td>
+<td class="adv">
+0.021</td>
+<td class="adv">
+0.139</td>
+<td class="adv">
+0.001</td>
+<td class="clean"></td>
+<td class="adv">
+0.051</td>
+<td class="adv">
+0.010</td>
+<td class="adv">
+0.088</td>
+<td class="adv">
+0.017</td>
+</tr>
+<tr>
+<td><b>on</b></td><td class="adv">
+0.007</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.029</td>
+<td class="adv">
+0.123</td>
+<td class="adv">
+0.019</td>
+<td class="adv">
+0.004</td>
+<td class="adv">
+0.070</td>
+<td class="adv">
+0.022</td>
+<td class="clean"></td>
+<td class="adv">
+0.010</td>
+<td class="adv">
+0.004</td>
+<td class="adv">
+0.003</td>
+</tr>
+<tr>
+<td><b>off</b></td><td class="adv">
+0.034</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.023</td>
+<td class="adv">
+0.097</td>
+<td class="adv">
+0.001</td>
+<td class="adv">
+0.032</td>
+<td class="adv">
+0.002</td>
+<td class="adv">
+0.026</td>
+<td class="adv">
+0.003</td>
+<td class="clean"></td>
+<td class="adv">
+0.004</td>
+<td class="adv">
+0.017</td>
+</tr>
+<tr>
+<td><b>stop</b></td><td class="adv">
+0.087</td>
+<td class="adv">
+0.005</td>
+<td class="adv">
+0.018</td>
+<td class="adv">
+0.006</td>
+<td class="adv">
+0.056</td>
+<td class="adv">
+0.026</td>
+<td class="adv">
+0.071</td>
+<td class="adv">
+0.037</td>
+<td class="adv">
+0.066</td>
+<td class="adv">
+0.095</td>
+<td class="clean"></td>
+<td class="adv">
+0.040</td>
+</tr>
+<tr>
+<td><b>go</b></td><td class="adv">
+0.033</td>
+<td class="adv">
+0.051</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.010</td>
+<td class="adv">
+0.006</td>
+<td class="adv">
+0.001</td>
+<td class="adv">
+0.003</td>
+<td class="adv">
+0.006</td>
+<td class="adv">
+0.024</td>
+<td class="adv">
+0.018</td>
+<td class="clean"></td>
+</tr>
+</table>
+
