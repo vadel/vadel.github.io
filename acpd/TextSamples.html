@@ -1,0 +1,832 @@
+<style>
+  .adv{
+    background-color: #ffffff;
+  }
+  .clean{
+    background-color: #cccccc;
+  }
+  .button {
+    background-color: #ffffff;
+    color: "black";
+    border: none;
+  }
+
+  .redchanges{
+    color: #FB2C00;
+  }
+
+  .greenchanges{
+    color: #007D08;
+  }
+
+  .blackchanges{
+    color: #000000;
+  }
+
+  #textdisplayer{
+    border-style: solid;
+    border-color: black;
+    width:  auto;
+    height: auto;
+    display: inline-block;
+    padding: 10px;
+  }
+
+  table {
+    /*border-collapse: collapse;*/
+    background-color: #555555;
+    border-color: #000000;
+    border-style: solid;
+  }
+  td, th{
+    background-color: #ffffff;
+    text-align:center;
+    font-weight: bold;
+  }
+  td{    
+    width: 2cm;
+    height: 0.85cm;
+  }
+
+
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 21px;
+  }
+
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 15px;
+    width: 15px;
+    left:  2px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(2px);
+    -ms-transform: translateX(22px);
+    transform: translateX(20px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+</style>
+
+
+<script>
+visible = 1; //var that keeps track of which table is visible (1 or 2)
+function change_table() {
+  t1 = document.getElementById("examplesTable");
+  t2 = document.getElementById("distortionTable");
+  if(visible == 1) {
+    visible = 2;
+    t1.style.display = 'none';
+    t2.style.display = 'inline-block';
+    document.getElementById("changeTableBtn").innerHTML = "Show Buttons";
+  } else {
+    visible = 1;
+    t1.style.display = 'inline-block';
+    t2.style.display = 'none';
+    document.getElementById("changeTableBtn").innerHTML = "Show Distortion (&#949)";
+  }
+}
+</script>
+
+
+
+<script>
+displayed_source = -1
+displayed_target = -1
+displayed_type   = ""
+
+
+function is_text_displayed(){
+  return (displayed_source!=-1 && displayed_target!=-1 && displayed_type!="")
+}
+
+
+function display_text(source,target,type){
+  showchanges  = document.getElementById("changes_checkbox").checked;
+
+  //Set the default colors to the source/target cell of a previous selection
+  if (is_text_displayed()){
+    default_color = "#ffffff"
+    change_cell_color("#source_cell_" + displayed_source, default_color)
+    change_cell_color("#target_cell_" + displayed_target, default_color)
+  }
+
+
+  displayed_source = source
+  displayed_target = target
+  displayed_type   = type
+
+  var text_id = "text_" + source + "_" + target + "_" + type
+  if (showchanges==1){
+    document.getElementById('textdisplayer').innerHTML=document.getElementById(text_id).innerHTML;
+  }
+  else{
+    document.getElementById('textdisplayer').innerHTML=document.getElementById(text_id).innerHTML;
+    //Disable the colors:
+    disable_colors('#textdisplayer')
+  }
+
+  if (type=="clean"){
+    var back_color = "#6bd17f"
+  }else{
+    var back_color = "#ff5858"
+  }
+  change_cell_color("#source_cell_" + source, back_color);
+  change_cell_color("#target_cell_" + target, back_color);
+
+}
+
+
+function change_cell_color(cell_id, set_color){
+  var cell = document.querySelector(cell_id);
+  cell.style.backgroundColor = set_color
+}
+
+
+
+function disable_colors(displayer_id){
+  //Disable the colors:
+  var container = document.querySelector(displayer_id);
+  var children = container.querySelectorAll(".redchanges, .greenchanges");
+  for (var i = 0; i < children.length; i++) {
+    var child = children[i];
+    child.classList.remove('redchanges');
+    child.classList.remove('greenchanges');
+    child.classList.add('blackchanges');
+  }
+}
+
+function action_color_checkbox(){
+  if (displayed_source!=-1 && displayed_target!=-1 && displayed_type!=""){
+    display_text(displayed_source, displayed_target, displayed_type)
+  }
+}
+</script>
+
+
+
+
+<h1>Extending Adversarial Attacks to Produce Adversarial Class Probability Distributions</h1>
+<h3>Jon Vadillo, Roberto Santana and Jose A. Lozano</h3>
+
+
+<img src="img/text_icon_description.png" alt="Icon description" height="100">
+
+
+<br>
+<br>
+Tweet:
+<div id="textdisplayer" style="border-color:#333333">  
+  Click an icon from the table below.
+</div>
+<br>
+<br>
+
+
+
+<!-- Rounded switch -->
+<label class="switch">
+  <input type="checkbox" id="changes_checkbox" onclick="action_color_checkbox()">
+  <span class="slider round"></span>
+</label>
+<span style="position:absolute"> &nbsp;Highlight changes</span>
+<br>
+<br>
+
+<button id="changeTableBtn" onclick="change_table()">Show Distortion (&#949)</button>
+<br>
+<br>
+
+
+
+
+
+
+<p hidden id="text_0_1_clean">
+i feel it like a <span class="greenchanges">dull</span> ache
+</p>
+<p hidden id="text_0_1_adv">
+i feel it like a <span class="redchanges">slow</span> ache
+</p>
+<p hidden id="text_0_2_clean">
+im <span class="greenchanges">feeling</span> like im also <span class="greenchanges">going</span> to be uploading some more of my poetry on here just some <span class="greenchanges">lame</span> stuff and lemme <span class="greenchanges">know</span> if you <span class="greenchanges">guys</span> like it
+</p>
+<p hidden id="text_0_2_adv">
+im <span class="redchanges">touch  </span> like im also <span class="redchanges">plump</span> to be uploading some more of my poetry on here just some <span class="redchanges">game</span> stuff and lemme <span class="redchanges">love</span> if you <span class="redchanges">guy </span> like it
+</p>
+<p hidden id="text_0_3_clean">
+i even remember trying them on last year and <span class="greenchanges">feeling</span> crappy because i was nowhere near closing them
+</p>
+<p hidden id="text_0_3_adv">
+i even remember trying them on last year and <span class="redchanges">tactual</span> crappy because i was nowhere near closing them
+</p>
+<p hidden id="text_0_4_clean">
+i have <span class="greenchanges">spent</span> more than what i expected when i <span class="greenchanges">went </span> to the us last summer so i <span class="greenchanges">feel   </span> <span class="greenchanges">burdened</span> that i have to <span class="greenchanges">work  </span> to lessen the financial burden of my parents
+</p>
+<p hidden id="text_0_4_adv">
+i have <span class="redchanges">drop </span> more than what i expected when i <span class="redchanges">croak</span> to the us last summer so i <span class="redchanges">tactile</span> <span class="redchanges">saddle  </span> that i have to <span class="redchanges">puzzle</span> to lessen the financial burden of my parents
+</p>
+<p hidden id="text_0_5_clean">
+i was <span class="greenchanges">reluctant</span> but hey i was feeling <span class="greenchanges">so    </span> <span class="greenchanges">lousy</span> i had nothing to lose
+</p>
+<p hidden id="text_0_5_adv">
+i was <span class="redchanges">loth     </span> but hey i was feeling <span class="redchanges">indeed</span> <span class="redchanges">icky </span> i had nothing to lose
+</p>
+<p hidden id="text_1_0_clean">
+i feel <span class="greenchanges">relieved</span> because <span class="greenchanges">finally</span> i can move on without a single tear shed
+</p>
+<p hidden id="text_1_0_adv">
+i feel <span class="redchanges">excuse  </span> because <span class="redchanges">lastly </span> i can move on without a single tear shed
+</p>
+<p hidden id="text_1_2_clean">
+i <span class="greenchanges">remember</span> a totally different feel having been a faithful dukes watcher growing up
+</p>
+<p hidden id="text_1_2_adv">
+i <span class="redchanges">commend </span> a totally different feel having been a faithful dukes watcher growing up
+</p>
+<p hidden id="text_1_3_clean">
+im trying to <span class="greenchanges">go    </span> on how i <span class="greenchanges">feel  </span> hopefully next <span class="greenchanges">time </span> i <span class="greenchanges">brave  </span> the <span class="greenchanges">scales</span> i will have been good for a few days and will <span class="greenchanges">see   </span> a <span class="greenchanges">nicer    </span> number
+</p>
+<p hidden id="text_1_3_adv">
+im trying to <span class="redchanges">extend</span> on how i <span class="redchanges">finger</span> hopefully next <span class="redchanges">metre</span> i <span class="redchanges">weather</span> the <span class="redchanges">scale </span> i will have been good for a few days and will <span class="redchanges">ensure</span> a <span class="redchanges">courteous</span> number
+</p>
+<p hidden id="text_1_4_clean">
+i feel absolutely <span class="greenchanges">fantastic</span> and i hope baby does too
+</p>
+<p hidden id="text_1_4_adv">
+i feel absolutely <span class="redchanges">rattling </span> and i hope baby does too
+</p>
+<p hidden id="text_1_5_clean">
+i really feel that my life is <span class="greenchanges">perfect</span> right now and if it isnt too much to ask for i just hope that everything would stay the same
+</p>
+<p hidden id="text_1_5_adv">
+i really feel that my life is <span class="redchanges">staring</span> right now and if it isnt too much to ask for i just hope that everything would stay the same
+</p>
+<p hidden id="text_2_0_clean">
+i really love eating fresh figs because they feel so <span class="greenchanges">delicate</span> and look so much prettier than the ugly dried figs
+</p>
+<p hidden id="text_2_0_adv">
+i really love eating fresh figs because they feel so <span class="redchanges">finespun</span> and look so much prettier than the ugly dried figs
+</p>
+<p hidden id="text_2_1_clean">
+i am so happy because i finally feel like i m doing something that i am <span class="greenchanges">compassionate</span> about
+</p>
+<p hidden id="text_2_1_adv">
+i am so happy because i finally feel like i m doing something that i am <span class="redchanges">condole      </span> about
+</p>
+<p hidden id="text_2_3_clean">
+i am very happy and feel <span class="greenchanges">loved</span>
+</p>
+<p hidden id="text_2_3_adv">
+i am very happy and feel <span class="redchanges">screw</span>
+</p>
+<p hidden id="text_2_4_clean">
+i sure <span class="greenchanges">know</span> where to come if i m feeling a <span class="greenchanges">little</span> <span class="greenchanges">tender</span>
+</p>
+<p hidden id="text_2_4_adv">
+i sure <span class="redchanges">bed </span> where to come if i m feeling a <span class="redchanges">slight</span> <span class="redchanges">cutter</span>
+</p>
+<p hidden id="text_2_5_clean">
+i <span class="greenchanges">find   </span> myself whinging about the temperature every day at the moment but it <span class="greenchanges">does </span> feel <span class="greenchanges">ridiculously</span> <span class="greenchanges">hot       </span>
+</p>
+<p hidden id="text_2_5_adv">
+i <span class="redchanges">observe</span> myself whinging about the temperature every day at the moment but it <span class="redchanges">cause</span> feel <span class="redchanges">ludicrously </span> <span class="redchanges">blistering</span>
+</p>
+<p hidden id="text_3_0_clean">
+i feel so <span class="greenchanges">pissed </span> and i feel like sleeping s
+</p>
+<p hidden id="text_3_0_adv">
+i feel so <span class="redchanges">smashed</span> and i feel like sleeping s
+</p>
+<p hidden id="text_3_1_clean">
+i play it i have more different feelings around a <span class="greenchanges">cold     </span> grim back drop
+</p>
+<p hidden id="text_3_1_adv">
+i play it i have more different feelings around a <span class="redchanges">insensate</span> grim back drop
+</p>
+<p hidden id="text_3_2_clean">
+i feel the weight of my <span class="greenchanges">single   </span> dom pulling me under like a <span class="greenchanges">dangerous</span> rip tide that is relentlessly <span class="greenchanges">surrounding</span> every inch of my body
+</p>
+<p hidden id="text_3_2_adv">
+i feel the weight of my <span class="redchanges">unmarried</span> dom pulling me under like a <span class="redchanges">grievous </span> rip tide that is relentlessly <span class="redchanges">border     </span> every inch of my body
+</p>
+<p hidden id="text_3_4_clean">
+i am feeling so <span class="greenchanges">grumpy</span> today
+</p>
+<p hidden id="text_3_4_adv">
+i am feeling so <span class="redchanges">cross </span> today
+</p>
+<p hidden id="text_3_5_clean">
+i am glad to <span class="greenchanges">know</span> the reason for my recent lapse of sanity but i still feel like i want to <span class="greenchanges">go  </span> on a very <span class="greenchanges">violent</span> rampage at the slightest inconvenience to me
+</p>
+<p hidden id="text_3_5_adv">
+i am glad to <span class="redchanges">hump</span> the reason for my recent lapse of sanity but i still feel like i want to <span class="redchanges">drop</span> on a very <span class="redchanges">wild   </span> rampage at the slightest inconvenience to me
+</p>
+<p hidden id="text_4_0_clean">
+i feel like i was <span class="greenchanges">assaulted</span> by a titanium hedgehog
+</p>
+<p hidden id="text_4_0_adv">
+i feel like i was <span class="redchanges">dishonor </span> by a titanium hedgehog
+</p>
+<p hidden id="text_4_1_clean">
+i feel like i was <span class="greenchanges">assaulted</span> by a titanium hedgehog
+</p>
+<p hidden id="text_4_1_adv">
+i feel like i was <span class="redchanges">set      </span> by a titanium hedgehog
+</p>
+<p hidden id="text_4_2_clean">
+i feel you i can t <span class="greenchanges">take  </span> more than mg of seroquel either because the restless leg syndrome <span class="greenchanges">keeps  </span> me awake all night
+</p>
+<p hidden id="text_4_2_adv">
+i feel you i can t <span class="redchanges">accept</span> more than mg of seroquel either because the restless leg syndrome <span class="redchanges">support</span> me awake all night
+</p>
+<p hidden id="text_4_3_clean">
+i walk in a conventional classroom my senses feel <span class="greenchanges">assaulted</span> by all the stuff on the walls hanging from the ceiling and covering all the surfaces
+</p>
+<p hidden id="text_4_3_adv">
+i walk in a conventional classroom my senses feel <span class="redchanges">outrage  </span> by all the stuff on the walls hanging from the ceiling and covering all the surfaces
+</p>
+<p hidden id="text_4_5_clean">
+i just feel like weve been living in a <span class="greenchanges">weird  </span> time warp like its only wednesday
+</p>
+<p hidden id="text_4_5_adv">
+i just feel like weve been living in a <span class="redchanges">uncanny</span> time warp like its only wednesday
+</p>
+<p hidden id="text_5_0_clean">
+i loved the feeling i <span class="greenchanges">got      </span> during an <span class="greenchanges">amazing</span> slalom run whether it was in training or in a race
+</p>
+<p hidden id="text_5_0_adv">
+i loved the feeling i <span class="redchanges">dumbfound</span> during an <span class="redchanges">awful  </span> slalom run whether it was in training or in a race
+</p>
+<p hidden id="text_5_1_clean">
+i feel like if you can t admit that you ve always been a <span class="greenchanges">little </span> bit weird or a little bit quirky it s just taking yourself too seriously
+</p>
+<p hidden id="text_5_1_adv">
+i feel like if you can t admit that you ve always been a <span class="redchanges">trivial</span> bit weird or a little bit quirky it s just taking yourself too seriously
+</p>
+<p hidden id="text_5_2_clean">
+i have a feeling that many of you will be <span class="greenchanges">surprised</span> to <span class="greenchanges">learn</span> that after <span class="greenchanges">nearly    </span> years it s time for me to say <span class="greenchanges">   </span> <span class="greenchanges"> </span> <span class="greenchanges">goodbye</span> as your guide to <span class="greenchanges">entertaining</span>
+</p>
+<p hidden id="text_5_2_adv">
+i have a feeling that many of you will be <span class="redchanges">storm    </span> to <span class="redchanges">read </span> that after <span class="redchanges">intimately</span> years it s time for me to say <span class="redchanges">bye</span> <span class="redchanges">-</span> <span class="redchanges">bye    </span> as your guide to <span class="redchanges">nurse       </span>
+</p>
+<p hidden id="text_5_3_clean">
+i feel <span class="greenchanges">amazed</span> at the world
+</p>
+<p hidden id="text_5_3_adv">
+i feel <span class="redchanges">gravel</span> at the world
+</p>
+<p hidden id="text_5_4_clean">
+i am feeling a <span class="greenchanges">curious</span> sense of <span class="greenchanges">relief     </span> a lightness that i never thought possible back when sex seemed to be the most desirable of desires and the ultimate act of self validation
+</p>
+<p hidden id="text_5_4_adv">
+i am feeling a <span class="redchanges">queer  </span> sense of <span class="redchanges">assuagement</span> a lightness that i never thought possible back when sex seemed to be the most desirable of desires and the ultimate act of self validation
+</p>
+
+
+
+
+<table border="1" id="examplesTable">
+<tr>
+<th> </th>
+<th id="target_cell_0"> sadness </th>
+<th id="target_cell_1"> joy </th>
+<th id="target_cell_2"> love </th>
+<th id="target_cell_3"> anger </th>
+<th id="target_cell_4"> fear </th>
+<th id="target_cell_5"> surprise </th>
+</tr>
+<tr>
+<td id="source_cell_0"><b>sadness</b></td>
+<td class="clean"></td>
+<td class="adv">
+<button class="button" onclick="display_text(0,1,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(0,1,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(0,2,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(0,2,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(0,3,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(0,3,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(0,4,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(0,4,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(0,5,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(0,5,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+</tr>
+<tr>
+<td id="source_cell_1"><b>joy</b></td>
+<td class="adv">
+<button class="button" onclick="display_text(1,0,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(1,0,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="clean"></td>
+<td class="adv">
+<button class="button" onclick="display_text(1,2,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(1,2,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(1,3,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(1,3,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(1,4,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(1,4,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(1,5,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(1,5,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+</tr>
+<tr>
+<td id="source_cell_2"><b>love</b></td>
+<td class="adv">
+<button class="button" onclick="display_text(2,0,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(2,0,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(2,1,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(2,1,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="clean"></td>
+<td class="adv">
+<button class="button" onclick="display_text(2,3,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(2,3,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(2,4,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(2,4,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(2,5,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(2,5,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+</tr>
+<tr>
+<td id="source_cell_3"><b>anger</b></td>
+<td class="adv">
+<button class="button" onclick="display_text(3,0,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(3,0,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(3,1,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(3,1,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(3,2,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(3,2,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="clean"></td>
+<td class="adv">
+<button class="button" onclick="display_text(3,4,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(3,4,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(3,5,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(3,5,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+</tr>
+<tr>
+<td id="source_cell_4"><b>fear</b></td>
+<td class="adv">
+<button class="button" onclick="display_text(4,0,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(4,0,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(4,1,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(4,1,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(4,2,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(4,2,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(4,3,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(4,3,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="clean"></td>
+<td class="adv">
+<button class="button" onclick="display_text(4,5,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(4,5,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+</tr>
+<tr>
+<td id="source_cell_5"><b>surprise</b></td>
+<td class="adv">
+<button class="button" onclick="display_text(5,0,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(5,0,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(5,1,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(5,1,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(5,2,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(5,2,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(5,3,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(5,3,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="adv">
+<button class="button" onclick="display_text(5,4,'clean')">
+<img src="img/text_icon1.png" alt="Clean text" height="22" width="22">
+</button>
+<button class="button" onclick="display_text(5,4,'adv')">
+<img src="img/text_icon2.png" alt="Adversarial text" height="22" width="22">
+</button>
+</td>
+<td class="clean"></td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+<table border="1" id="distortionTable" style="display: none;">
+<tr>
+<th> </th>
+<th> sadness </th>
+<th> joy </th>
+<th> love </th>
+<th> anger </th>
+<th> fear </th>
+<th> surprise </th>
+</tr>
+<tr>
+<td><b>sadness</b></td>
+<td class="clean"></td>
+<td class="adv">
+0.154</td>
+<td class="adv">
+0.136</td>
+<td class="adv">
+0.071</td>
+<td class="adv">
+0.176</td>
+<td class="adv">
+0.250</td>
+</tr>
+<tr>
+<td><b>joy</b></td>
+<td class="adv">
+0.153</td>
+<td class="clean"></td>
+<td class="adv">
+0.072</td>
+<td class="adv">
+0.216</td>
+<td class="adv">
+0.135</td>
+<td class="adv">
+0.054</td>
+</tr>
+<tr>
+<td><b>love</b></td>
+<td class="adv">
+0.071</td>
+<td class="adv">
+0.099</td>
+<td class="clean"></td>
+<td class="adv">
+0.133</td>
+<td class="adv">
+0.232</td>
+<td class="adv">
+0.214</td>
+</tr>
+<tr>
+<td><b>anger</b></td>
+<td class="adv">
+0.091</td>
+<td class="adv">
+0.122</td>
+<td class="adv">
+0.167</td>
+<td class="clean"></td>
+<td class="adv">
+0.179</td>
+<td class="adv">
+0.077</td>
+</tr>
+<tr>
+<td><b>fear</b></td>
+<td class="adv">
+0.160</td>
+<td class="adv">
+0.140</td>
+<td class="adv">
+0.093</td>
+<td class="adv">
+0.056</td>
+<td class="clean"></td>
+<td class="adv">
+0.087</td>
+</tr>
+<tr>
+<td><b>surprise</b></td>
+<td class="adv">
+0.143</td>
+<td class="adv">
+0.044</td>
+<td class="adv">
+0.205</td>
+<td class="adv">
+0.154</td>
+<td class="adv">
+0.089</td>
+<td class="clean"></td>
+</tr>
+</table>
+
+
+
+
+
+
+<br>
+<br>
+Rows: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Original classes
+<br>
+Columns: &nbsp; Target  classes
+
+
+
+<script>
+change_table()
+change_table()
+</script>
