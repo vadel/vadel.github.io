@@ -1,174 +1,313 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Michroma" /> -->
-
-
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Home</title>
 <style>
 
-	body {	  
-		max-width: 1200px;
-		margin: auto;
-	}
+    body {	  
+        max-width: 1200px;
+        margin: auto;
+        background-color:#ffffff;
+        font-family: Helvetica, sans-serif;
+    }
 
-	hr.style13 {
-		height: 10px;
-		border: 0;
-		box-shadow: 0 10px 8px -8px #8c8b8b inset;
-	}
+    hr.style13 {
+        height: 10px;
+        border: 0;
+        box-shadow: 0 10px 8px -8px #8c8b8b inset;
+    }
 	
-	h1 { font-family: Helvetica;} 
+    a {
+        color: #1b4f8a;
+        text-decoration: none;
+    }
 
-	a {
-		/* color: #6f6f6f; */
-		color: #1b4f8a;
-	}
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Apply scroll margin to each section */
+    .section {
+        scroll-margin-top: 120px; /* Adjust based on navbar height */
+        padding: 1px 0;
+        /* border-bottom: 2px solid #ddd; */
+    }
+
+
+    /* Full-width Navigation Bar */
+    nav {
+        background: #306aac;
+        padding: 15px;
+        text-align: center;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+    }
+
+    nav a {
+        color: white;
+        margin: 0 15px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+    /* Flexbox for Top Section */
+    .top-container {
+        display: flex;
+        align-items: center;
+        margin-top: 80px; /* Adjust for fixed navbar */
+        padding: 20px;
+    }
+
+    /* Profile section on the left */
+    .profile {
+        text-align: center;
+        max-width: 300px;
+        margin-right: 50px;
+    }
+
+    /* Elegant Circular Profile Image */
+    .profile img {
+        width: 150px;
+        height: 155px;
+        border-radius: 50%; /* Perfect circle */
+        border:4px solid #306aac;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2); /* Elegant soft shadow */
+        object-fit: cover;
+    }
+
+    /* Google Scholar Icon */
+    .scholar-icon {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .scholar-icon img {
+        width: 28px; /* Adjust size as needed */
+        height: 28px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .scholar-icon img:hover {
+        transform: scale(1.1); /* Slight zoom on hover */
+    }
+
+    /* About Section on the right */
+    .about {
+        max-width: 800px;
+        font-size: 110%;
+    }
+
+    .offset {
+        padding-top: 1px;
+    }
 
 </style>
 </head>
 
-<body data-gr-c-s-loaded="true" style="background-color:#DDDDDD;" >
+<body>
 
-<div class="header">
-<h1>Jon Vadillo Jueguen</h1>
-<h2>Personal Website</h2>
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Top Section: Profile on Left, About Info on Right -->
+    <div id="about" class="top-container section offset">
+        
+        <!-- Profile Section (Left) -->
+        <div class="profile">
+            <img src="img/profile.jpg" alt="Jon Vadillo">
+            <p><strong>ML Safety Researcher  <br> & Assistant Professor</strong><br>University of the Basque Country <br> (UPV/EHU)</p>
+            
+            <a class="email-icon" href="mailto:&#x6A;&#x6F;&#x6E;&#x2E;&#x76;&#x61;&#x64;&#x69;&#x6C;&#x6C;&#x6F;&#x40;&#x65;&#x68;&#x75;&#x2E;&#x65;&#x75;&#x73;&#xA;" target="_blank">
+                <i style="font-size:48px" class="fa">&#xf0e0;</i>
+            </a>
+
+            <a class="scholar-icon" href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
+                <i class="ai ai-google-scholar ai-3x" ></i>
+            </a>
+            <a class="github-icon" href="https://github.com/vadel" target="_blank">
+                <i style="font-size:50px" class="fa">&#xf09b;</i>
+            </a>
+            <a class="scv-icon" href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
+                <i class="ai ai-cv ai-3x" ></i>
+            </a>
+        </div>
+
+        <!-- About Section (Right) -->
+        <div class="about">
+            <h1>Jon Vadillo</h1>
+            <p>
+                I received a B.S. degree in Computer Science from the University of the Basque Country UPV/EHU (Spain) in 2018, 
+                and an M.Sc. degree at the same university in 2019. In 2023, I obtained a Ph.D. at the University of the Basque Country, 
+                under the supervision of Dr. Roberto Santana and Prof. Jose A. Lozano, specializing in adversarial machine learning. 
+                Currently, I am an Assistant Professor at UPV/EHU.
+            </p>
+            <p>
+                My research focuses on the vulnerabilities and trustworthiness of deep learning models in adversarial scenarios, 
+                with a particular emphasis on the implications of adversarial examples in explainable models.
+            </p>
+        </div>
+
+    </div>
+
+    <br>
+    <hr class="style13">
+    <br>
+
+
+    <div id="publications" class="section offset">
+        <h2>Publications (<a href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ">Google Scholar</a>)</h2>
+
+        <ul>
+            <li><a href="http://doi.org/10.1002/widm.1567"><b>Adversarial Attacks in Explainable Machine Learning: A Survey of Threats Against Models and Humans.</b></a> 
+                <br><i><b>WIREs Data Mining and Knowledge Discovery</b>, e1567. DOI: 10.1002/widm.1567. </i> 
+                <br>Vadillo, J., Santana, R. and Lozano, J.A. (2024).
+            </li>
+            <br>
+            <li><a href="https://jmlr.org/papers/v24/21-0326.html"><b>Extending Adversarial Attacks to Produce Adversarial Class Probability Distributions.</b></a> 
+                <br><i><b>Journal of Machine Learning Research</b>, 24(15).</i> pp. 1-42. 
+                    <b>Featured at <a href="https://icml.cc/virtual/2024/poster/35632">ICML 2024.</a></b>
+                <br>Vadillo, J., Santana, R. and Lozano, J.A. (2023).
+            </li>
+            <br>
+            <li><a href="https://arxiv.org/abs/2403.13740"><b>Uncertainty-Aware Explanations Through Probabilistic Self-Explainable Neural Networks.</b></a>
+                <br><i><b>Preprint</b> arXiv:2403.13740</i>.
+                <br>Vadillo, J., Santana, R., Lozano, J.A., Kwiatkowska, M. (2024).
+            </li>
+            <br>
+            <li><a href="https://doi.org/10.1016/j.knosys.2021.107719"><b>Analysis of Dominant Classes in Universal Adversarial Perturbations.</b></a> 
+                <br><i><b>Knowledge-Based Systems</b>, 236. pp. 107719. Elsevier. DOI: 10.1016/j.knosys.2021.107719</i>.
+                <br>Vadillo, J., Santana, R. and Lozano, J.A. (2022).
+            </li>
+            <br>
+            <li><a href="https://doi.org/10.1016/j.cose.2021.102495"><b>On the Human Evaluation of Audio Adversarial Examples.</b></a> 
+                <br><i><b>Computers & Security</b>, 112. pp. 102495. Elsevier. DOI: 10.1016/j.cose.2021.102495.</i>
+                <br>Vadillo, J. and Santana, R. (2022).
+            </li>
+            <br>
+            <li><a href="https://doi.org/10.1007/978-3-030-95470-3_31"><b>Adversarial Perturbations for Evolutionary Optimization.</b></a> 
+                <br><i><b>Machine Learning, Optimization, and Data Science (LOD)</b>. LNCS, 13164. pp. 408-422. Springer. DOI: 10.1007/978-3-030-95470-3_31.</i>
+                <br>Garciarena, U., Vadillo, J., Mendiburu, A. and Santana, R.  (2022).
+            </li>
+            <br>
+            <li> <a href=https://arxiv.org/abs/2107.01943><b>When and How to Fool Explainable Models (and Humans) with Adversarial Examples.</b></a> 
+                <br><i><b>Preprint, </b> arXiv:2107.01943. </i> 
+                <br>Vadillo, J., Santana, R. and Lozano, J.A. (2021).
+            </li>
+            <br>
+            <li><a href="https://arxiv.org/abs/1911.10182"><b>Universal Adversarial Examples in Speech Command Classification.</b></a> 
+                <br><i><b>Proceedings of the XIX Conference of the Spanish Association for Artificial Intelligence (CAEPIA).</b> pp. 642-647 </i>
+                <br> Vadillo, J. and Santana, R. (2021). 
+            </li>
+            <br>
+            <li><a href="https://doi.org/10.1007/978-3-030-64580-9_18"><b>Exploring Gaps in DeepFool in Search of More Effective Adversarial Perturbations.</b></a> 
+                <br><i><b>In Machine Learning, Optimization, and Data Science (LOD).</b> LCNS, 12566. pp. 215-227. Springer. DOI: 10.1007/978-3-030-64580-9_18.</i> 
+                <br>Vadillo, J., Santana, R. and Lozano, J.A. (2020).
+            </li>
+            <br>
+            <li> 
+                <a href="https://doi.org/10.1109/BigData.2018.8621887"><b>I4TSPS: a Visual-Interactive Web System for Industrial Time-Series Pre-processing.</b></a> 
+                <br><i><b>IEEE International Conference on Big Data (Big Data),</b> pp. 2012-2018. IEEE.  DOI: 10.1109/BigData.2018.8621887.</i> 
+                <br>Villalobos, K., Vadillo, J., Diez, B., Calvo, B., & Illarramendi, A. (2018).
+            </li>
+        </ul>
+    </div>
 
 
 <br>
 <hr class="style13">
 <br>
 
-<p style="font-size:120%;">
-I received a B.S. degree in Computer Science from the University of the Basque Country UPV/EHU (Spain) in 2018, 
-and a M.Sc. degree at the same university in 2019. 
-In 2023, I obtained a Ph.D. degree at the University of the Basque Country UPV/EHU, Spain, 
-under the supervision of Dr. Roberto Santana and Prof. Jose A. Lozano in the field of adversarial machine learning. 
-Currently, I am an Assistant Professor at UPV/EHU.
-<br>
-<br>
-My current research interests comprise the vulnerabilities and trustworthiness of deep learning models in adversarial scenarios, 
-with particular attention to the implications of adversarial examples in explainable models.
-</p>
+
+    <div id="education" class="section offset">
+        <h2>Education</h2>
+
+        <ul>
+            <li> PhD - Computer Science
+                <ul>
+                    <li> Title: <i>"Broadening the Horizon of Adversarial Attacks in Deep Learning"</i> </li>
+                    <li> Grade: Cum Laude </li>
+                    <li> Four-month research stay at the 
+                        <a href="https://www.ox.ac.uk/">University of Oxford</a> (UK), 
+                        supervised by Prof. 
+                        <a href="https://www.cs.ox.ac.uk/people/marta.kwiatkowska/">Marta Kwiatkowska</a>.
+                    </li>
+                </ul>
+            </li>
+            <br>
+            <li> M. Sc. - Computational Engineering and Intelligent Systems	
+                    <ul>
+                        <li> Average grade: 9.81</li>
+                        <li> Final project passed with honours </li>
+                        <li> 3 subjects passed with honours (out of 10) </li>
+                    </ul>
+            </li>
+            <br>
+            <li> Bachelor's Degree in Computer Sciences 
+                    <ul>
+                        <li> Extraordinary Award to the Best Academic Record</li>
+                        <li> Average grade: 9.52</li>
+                        <li> Final project passed with honours </li>
+                        <li> 24 subjects passed with honours (out of 36) </li>
+                    </ul>
+            </li>
+        </ul>
 
 
+        <h3>Other courses</h3>
+        <ul>
+            <li> 3rd ACM Europe Summer School on Data Science - Athens (Greece). </li>
+        </ul>
 
-<br>
-<hr class="style13">
-<br>
-
-<h2>Publications (<a href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ">Google Scholar</a>)</h2>
-
-<ul>
-	<li>Vadillo, J., Santana, R. and Lozano, J.A. <a href="http://doi.org/10.1002/widm.1567"><b>Adversarial Attacks in Explainable Machine Learning: A Survey of Threats Against Models and Humans.</b></a> <i>WIREs Data Mining and Knowledge Discovery, e1567. </i> (2024). DOI: 10.1002/widm.1567.
-	</li>
-	<br>
-	<li>Vadillo, J., Santana, R. and Lozano, J.A. <a href="https://jmlr.org/papers/v24/21-0326.html"><b>Extending Adversarial Attacks to Produce Adversarial Class Probability Distributions.</b></a> <i>Journal of Machine Learning Research, 24(15).</i> pp. 1-42. (2023). Featured at <b><a href="https://icml.cc/virtual/2024/poster/35632">ICML 2024</a></b>.
-	</li>
-	<br>
-	<li>Vadillo, J., Santana, R., Lozano, J.A., Kwiatkowska, M. <a href="https://arxiv.org/abs/2403.13740"><b>Uncertainty-Aware Explanations Through Probabilistic Self-Explainable Neural Networks.</b></a> arXiv preprint arXiv:2403.13740<i>. </i></a> (2024).
-	</li>
-	<br>
-	<li>Vadillo, J., Santana, R. and Lozano, J.A. <a href="https://doi.org/10.1016/j.knosys.2021.107719"><b>Analysis of Dominant Classes in Universal Adversarial Perturbations.</b></a> <i>Knowledge-Based Systems, 236. </i> pp. 107719. Elsevier. (2022). DOI: 10.1016/j.knosys.2021.107719</a>.
-	</li>
-	<br>
-	<li>Vadillo, J. and Santana, R. <a href="https://doi.org/10.1016/j.cose.2021.102495"><b>On the Human Evaluation of Audio Adversarial Examples.</b></a> <i>Computers & Security, 112.</i> pp. 102495. Elsevier. (2022). DOI: 10.1016/j.cose.2021.102495.
-	</li>
-	<br>
-	<li>Garciarena, U., Vadillo, J., Mendiburu, A. and Santana, R. <a href="https://doi.org/10.1007/978-3-030-95470-3_31"><b>Adversarial Perturbations for Evolutionary Optimization.</b></a> <i>In Machine Learning, Optimization, and Data Science (LOD). Lecture Notes in Computer Science, 13164. </i> pp. 408-422. Springer, Cham. (2022). DOI: 10.1007/978-3-030-95470-3_31.
-	</li>
-	<br>
-	<li>Vadillo, J., Santana, R. and Lozano, J.A. <a href=https://arxiv.org/abs/2107.01943><b>When and How to Fool Explainable Models (and Humans) with Adversarial Examples.</b></a> <i>arXiv preprint arXiv:2107.01943. </i> (2021).
-	</li>
-	<br>
-	<li>Vadillo, J. and Santana, R. <a href="https://arxiv.org/abs/1911.10182"><b>Universal Adversarial Examples in Speech Command Classification.</b></a> 
-	<i>In Proceedings of the XIX Conference of the Spanish Association for Artificial Intelligence (CAEPIA).</i> pp. 642-647 (2021). 
-	</li>
-	<br>
-	<li>Vadillo, J., Santana, R. and Lozano, J.A. <a href="https://doi.org/10.1007/978-3-030-64580-9_18"><b>Exploring Gaps in DeepFool in Search of More Effective Adversarial Perturbations.</b></a> <i>In Machine Learning, Optimization, and Data Science (LOD). Lecture Notes in Computer Science, 12566. </i> pp. 215-227. Springer, Cham. (2020). DOI: 10.1007/978-3-030-64580-9_18.
-	</li>
-	<br>
-	<li> Villalobos, K., Vadillo, J., Diez, B., Calvo, B., & Illarramendi, A. <a href="https://doi.org/10.1109/BigData.2018.8621887"><b>I4TSPS: a Visual-Interactive Web System for Industrial Time-Series Pre-processing.</b></a> <i> In 2018 IEEE International Conference on Big Data (Big Data).</i> pp. 2012-2018. IEEE. (2018). DOI: 10.1109/BigData.2018.8621887.
-	</li>
-</ul>
-
+    </div>
 
 <br>
 <hr class="style13">
 <br>
 
 
-<h2>Education</h2>
+<div id="awards" class="section offset">
+    <h2>Grants and Awards</h2>
 
-<ul>
-	<li> PhD - Computer Science	
-		<ul>
-			<li> Title: "Broadening the Horizon of Adversarial Attacks in Deep Learning" </li>
-			<li> Grade: Cum Laude </li>
-			<li> Four-month research stay at the University of Oxford (UK), supervised by Prof. Marta Kwiatkowska </li>
-		</ul>
-	</li>
-	<br>
-	<li> M. Sc. - Computational Engineering and Intelligent Systems	
-			<ul>
-				<li> Average grade: 9.81</li>
-				<li> Final project passed with honours </li>
-				<li> 3 subjects passed with honours (out of 10) </li>
-			</ul>
-	</li>
-	<br>
-	<li> Bachelor's Degree in Computer Sciences 
-			<ul>
-				<li> Extraordinary Award to the Best Academic Record</li>
-				<li> Average grade: 9.52</li>
-				<li> Final project passed with honours </li>
-				<li> 24 subjects passed with honours (out of 36) </li>
-			</ul>
-	</li>
-</ul>
-
-
-
-<h2>Other courses</h2>
-
-<ul>
-	<li> 3rd ACM Europe Summer School on Data Science - Athens (Greece). </li>
-</ul>
-
-
-
-<br>
-<hr class="style13">
-<br>
-
-
-
-<h2>Grants and Awards</h2>
-
-<ul>
-	<li> Award to the Best Ph. D. Project</li>
-		<ul>
-			<li> 
-			Doctoral Consortium of the XIX Conference of the Spanish Association for Artificial Intelligence (CAEPIA 20/21).
-			</li>
-		</ul>
-	<br>
-	<li> Special Award to the Best Academic Record - Bachelor's Degree on Computer Sciences </li>
-	<br>
-	<li> ACM International Collegiate Programming Contest (ICPC)
-		<ul>
-			<li> Honorable mentions in the South Western Europe Regional Contest (SWERC) in 2016 and 2017.</li>
-		</ul>
-	</li>
-	<br>
-	<li> Granted collaboration with a university research group - Ikasiker Scholarship Plan 
-		<ul>
-			<li> Interoperable Databases Group - University of the Basque Country (UPV/EHU) </li>
-		</ul>
-	</li>
-</ul>
-
+    <ul>
+        <li> Award to the Best Ph. D. Project</li>
+            <ul>
+                <li> 
+                Doctoral Consortium of the XIX Conference of the Spanish Association for Artificial Intelligence (CAEPIA 20/21).
+                </li>
+            </ul>
+        <br>
+        <li> Special Award to the Best Academic Record - Bachelor's Degree on Computer Sciences </li>
+        <br>
+        <li> ACM International Collegiate Programming Contest (ICPC)
+            <ul>
+                <li> Honorable mentions in the South Western Europe Regional Contest (SWERC) in 2016 and 2017.</li>
+            </ul>
+        </li>
+        <br>
+        <li> Granted collaboration with a university research group - Ikasiker Scholarship Plan 
+            <ul>
+                <li> Interoperable Databases Group - University of the Basque Country (UPV/EHU) </li>
+            </ul>
+        </li>
+    </ul>
+</div>
 
 <br>
 <hr class="style13">
@@ -178,10 +317,13 @@ with particular attention to the implications of adversarial examples in explain
 <h2>Dissemination</h2>
 
 <ul>
-	<li>Vadillo, J., Santana, R. and Lozano, J.A. <a href="https://sinews.siam.org/Details-Page/do-you-trust-your-speech-recognition-system">Do You Trust Your Speech Recognition System? Fooling Deep Learning with (Inaudible) Audio Perturbations.</a> SIAM News. (2022).
+	<li><a href="https://sinews.siam.org/Details-Page/do-you-trust-your-speech-recognition-system">Do You Trust Your Speech Recognition System? Fooling Deep Learning with (Inaudible) Audio Perturbations.</a> 
+        <br><i><b>SIAM News. </b></i>
+        Vadillo, J., Santana, R. and Lozano, J.A. (2022).
 	</li>
 	<br>
-	<li>Rayne, E. <a href="https://www.syfy.com/syfy-wire/robots-can-be-wrong-ai-is-fooled-by-perturbations">Even Robots Can Be Fooled, but They're Getting Smarter.</a> SYFY Wire. (2022).
+	<li><a href="https://www.syfy.com/syfy-wire/robots-can-be-wrong-ai-is-fooled-by-perturbations">Even Robots Can Be Fooled, but They're Getting Smarter.</a> 
+        <br><i><b>SYFY Wire.</b></i> Rayne, E. (2022).
 	</li>
 </ul>
 
@@ -189,6 +331,29 @@ with particular attention to the implications of adversarial examples in explain
 <br>
 <hr class="style13">
 <br>
+
+    <!-- Contact Section -->
+    <div id="contact" class="section">
+        <h2>Contact</h2>
+        <p> Feel free to contact me for potential collaborations or question! </p>
+        <p>
+            <a class="email-icon" href="mailto:&#x6A;&#x6F;&#x6E;&#x2E;&#x76;&#x61;&#x64;&#x69;&#x6C;&#x6C;&#x6F;&#x40;&#x65;&#x68;&#x75;&#x2E;&#x65;&#x75;&#x73;&#xA;" target="_blank">
+                <i style="font-size:48px" class="fa">&#xf0e0;</i>
+            </a>
+
+            <a class="scholar-icon" href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
+                <i class="ai ai-google-scholar ai-3x" ></i>
+            </a>
+            <a class="github-icon" href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
+                <i style="font-size:50px" class="fa">&#xf09b;</i>
+            </a>
+            <a class="scv-icon" href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
+                <i class="ai ai-cv ai-3x" ></i>
+            </a>
+        </p>
+		<br>
+		<br>
+    </div>
 
 
 </div>
