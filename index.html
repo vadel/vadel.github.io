@@ -105,7 +105,25 @@
     }
 
     .profile-icons a:hover {
-        transform: scale(1.1);
+        transform: scale(1.15);
+    }
+
+    /* Social Icons */
+    .profile-icons-bottom {
+        display: flex;
+        /* justify-content: center; */
+        gap: 10px; /* Space between icons */
+        margin-top: 10px;
+    }
+
+    .profile-icons-bottom a {
+        font-size: 50px;
+        color: #1b4f8a;
+        transition: transform 0.1s ease-in-out;
+    }
+
+    .profile-icons-bottom a:hover {
+        transform: scale(1.15);
     }
 
     /* About Section on the right */
@@ -167,7 +185,7 @@
             
             <!-- Icons Row -->
             <div class="profile-icons">
-                <a href="mailto:jon.vadillo@ehu.eus" target="_blank">
+                <a href="mailto:&#x6A;&#x6F;&#x6E;&#x2E;&#x76;&#x61;&#x64;&#x69;&#x6C;&#x6C;&#x6F;&#x40;&#x65;&#x68;&#x75;&#x2E;&#x65;&#x75;&#x73;&#xA;" target="_blank">
                     <i class="fa fa-envelope"></i>
                 </a>
 
@@ -372,21 +390,25 @@
     <!-- Contact Section -->
     <div id="contact" class="section">
         <h2>Contact</h2>
-        <p> Feel free to contact me for potential collaborations or question! </p>
+        <p> Feel free to contact me for potential collaborations or questions! </p>
         <p>
-            <a class="email-icon" href="mailto:&#x6A;&#x6F;&#x6E;&#x2E;&#x76;&#x61;&#x64;&#x69;&#x6C;&#x6C;&#x6F;&#x40;&#x65;&#x68;&#x75;&#x2E;&#x65;&#x75;&#x73;&#xA;" target="_blank">
-                <i style="font-size:48px" class="fa">&#xf0e0;</i>
-            </a>
+            <div class="profile-icons-bottom">
+                <a href="mailto:&#x6A;&#x6F;&#x6E;&#x2E;&#x76;&#x61;&#x64;&#x69;&#x6C;&#x6C;&#x6F;&#x40;&#x65;&#x68;&#x75;&#x2E;&#x65;&#x75;&#x73;&#xA;" target="_blank">
+                    <i class="fa fa-envelope"></i>
+                </a>
 
-            <a class="scholar-icon" href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
-                <i class="ai ai-google-scholar ai-3x" ></i>
-            </a>
-            <a class="github-icon" href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
-                <i style="font-size:50px" class="fa">&#xf09b;</i>
-            </a>
-            <a class="scv-icon" href="assets/CV_JonVadillo.pdf" target="_blank">
-                <i class="ai ai-cv ai-3x" ></i>
-            </a>
+                <a href="https://scholar.google.com/citations?&user=sViKhEsAAAAJ" target="_blank">
+                    <i class="ai ai-google-scholar"></i>
+                </a>
+
+                <a href="https://github.com/vadel" target="_blank">
+                    <i class="fa fa-github"></i>
+                </a>
+
+                <a href="assets/CV_JonVadillo.pdf" target="_blank">
+                    <i class="ai ai-cv"></i>
+                </a>
+            </div>
         </p>
 		<br>
 		<br>
